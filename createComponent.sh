@@ -1,22 +1,15 @@
-#!/bin/sh
-while getopts f:a: flag
+#!/bin/sh  
+  while getopts a: flag
 do
     case "${flag}" in
-        f) filename=${OPTARG};;
-        a) useFile=${OPTARG};;
+        a) filename=${OPTARG};;
     esac
 done
-
-mkdir ./views/$filename;
-cd ./views/$filename;
-touch $filename.js;
-touch $filename.scss;
-if [ $useFile ]
-then
-echo 'creating component with use file'
-touch use$filename.js
-fi
-
+echo "creating a component named $filename";
+mkdir ./components/$filename;
+touch ./components/$filename/filename.js;
+touch ./components/filename/filename.module.scss;  
+  
 jsfile=$filename.js
 echo "import { useState } from 'react';" > $jsfile
 echo "import classes from './$filename.module.scss';" >> $jsfile
@@ -28,4 +21,4 @@ echo "    );" >> $jsfile
 echo '};' >> $jsfile
 echo >> $jsfile
 
-echo "Created a component named: $filename";
+echo "Done creating: $filename component";
