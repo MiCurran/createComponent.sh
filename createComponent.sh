@@ -7,10 +7,10 @@ do
 done
 echo "creating a component named $filename";
 mkdir ./components/$filename;
-touch ./components/$filename/filename.js;
-touch ./components/filename/filename.module.scss;  
+touch ./components/$filename/$filename.js;
+touch ./components/$filename/$filename.module.scss;  
   
-jsfile=$filename.js
+jsfile=./components/$filename/$filename.js
 echo "import { useState } from 'react';" > $jsfile
 echo "import classes from './$filename.module.scss';" >> $jsfile
 echo ' ' >> $jsfile
